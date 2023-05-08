@@ -1,2 +1,2 @@
-public class Elephant {
+public class Elephant extends Piece{
 }
