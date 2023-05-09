@@ -1,4 +1,4 @@
-public class Animal extends Piece {
+public abstract class Animal extends Piece {
    public static final int RAT = 1;
    public static final int CAT = 2;
    public static final int WOLF = 3;
@@ -11,7 +11,8 @@ public class Animal extends Piece {
    private boolean isTrapped;
    private int rank;
    
-   public Animal(boolean canSwim, int rank, boolean isTrapped){
+   public Animal(boolean canSwim, int rank, boolean isTrapped, int colour){
+      super(colour);
       this.canSwim = canSwim;
       this.rank = rank;
       this.isTrapped = isTrapped;

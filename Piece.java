@@ -1,9 +1,9 @@
 public abstract class Piece {
-   private String name;
-   private int level;
+   int colour;
    
-   public String toString(){
-      return name;
+   public Piece(int colour){
+      this.colour = colour;
    }
    
+   public abstract String toString();     
 }
