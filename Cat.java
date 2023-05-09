@@ -1,2 +1,2 @@
-public class Cat extends Piece {
+public class Cat extends Animal {
 }

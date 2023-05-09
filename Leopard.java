@@ -1,2 +1,2 @@
-public class Leopard extends Piece {
+public class Leopard extends Animal {
 }
