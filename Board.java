@@ -2,7 +2,7 @@ public class Board {
    public final static int RIV = 0;
    public final static int P1 = 1;
    public final static int P2 = 2;
-<<<<<<< HEAD
+//<<<<<<< HEAD
    public final static char LEFT = 'a';
    public final static char RIGHT = 'd';
    public final static char UP = 'w';
@@ -11,16 +11,16 @@ public class Board {
    private Player currPlayer;
    
   
-=======
-   public static ArrayList<Piece> black = new ArrayList<Piece>();
- public static ArrayList<Piece> white = new ArrayList<Piece>();
+//=======
+  // public static ArrayList<Piece> black = new ArrayList<Piece>();
+// public static ArrayList<Piece> white = new ArrayList<Piece>();
 
    public final int[][] BLACK_TRAP = {{2,0}, {3,1}, {4,0}};
    public final int[][] WHITE_TRAP = {{2,8}, {3,7}, {4,8}};
    public final int[] BLACK_BASE = {3,0};
    public final int[] WHITE_BASE = {3,8};
    //public final int[][] RIVER = {{1,3}, {2,3}, {4,3}, {5,3}, {1,4}, {2,4}, {4,4}, {5,4}, {1,5}, {2,5}, {4,5}, {5,5}};
->>>>>>> refs/remotes/origin/main
+//>>>>>>> refs/remotes/origin/main
    // Making Border
    public static Piece board[][] = new Piece[9][7];
    
@@ -66,7 +66,7 @@ public class Board {
       currPlayer = allPlayer[0];
    }
    
-<<<<<<< HEAD
+//<<<<<<< HEAD
    public void SetCurrPlayer(int id){
       if (id == 1 || id == 2){
          currPlayer = allPlayer[id-1];
@@ -81,6 +81,6 @@ public class Board {
       currPlayer = allPlayer[(currPlayer.GetId() * -1) + 2];
    }
 }
-=======
-}
->>>>>>> refs/remotes/origin/main
+//=======
+
+//>>>>>>> refs/remotes/origin/main
