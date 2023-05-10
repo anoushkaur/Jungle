@@ -53,6 +53,7 @@ public class Board {
       board[6][4] = new Leopard(P2);
       board[6][2] = new Wolf(P2);
       board[6][0] = new Elephant(P2);
+      allPlayer = new Player[2]; 
       allPlayer[0] = new Player(1);
       allPlayer[1] = new Player(2);
       currPlayer = allPlayer[0];
