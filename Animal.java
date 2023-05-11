@@ -10,12 +10,17 @@ public abstract class Animal extends Piece {
    private boolean canSwim;
    private boolean isTrapped;
    private int rank;
+   private int owner;
    
-   public Animal(boolean canSwim, int rank, boolean isTrapped, int colour){
-      super(colour);
+   public Animal(boolean canSwim, int rank, boolean isTrapped, int owner){
+      this.owner = owner;
       this.canSwim = canSwim;
       this.rank = rank;
       this.isTrapped = isTrapped;
+   }
+   
+   public int GetOwner(){
+      return this.owner;
    }
    
    public boolean GetCanSwim(){

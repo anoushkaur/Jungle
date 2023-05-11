@@ -1,10 +1,10 @@
 public class Cat extends Animal {
-   public Cat(int colour){
-      super(false, Animal.CAT, false, colour);
+   public Cat(int owner){
+      super(false, Animal.CAT, false, owner);
    }
    
    public String toString(){
-      if (this.colour == Board.P1){
+      if (this.GetOwner() == GameSystem.P1){
          return ("CAT(" + GetRank() +")"); //player 1 
       }
       return ("cat(" + GetRank() +")"); //player 2

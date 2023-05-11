@@ -1,6 +1,13 @@
 public class Trap extends Piece {
-   public Trap(int colour){
-      super(colour);
+   
+   private int owner;
+   
+   public Trap(int owner){
+      this.owner = owner;
+   }
+   
+   public int GetOwner(){
+      return this.owner;
    }
    
    public String toString(){
