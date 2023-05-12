@@ -124,6 +124,11 @@ public class GameSystem {
             valid[0] = true;
          }
          else if (board[row][col-1] instanceof Animal){
+            if(((Animal)board[row][col-1]).GetOwner() != currPlayer.GetId() && (a.GetRank() - ((Animal)board[row][col-1]).GetRank()) >=0){
+               allPlayer[(currPlayer.GetId() * -1) + 2].RemoveAnimal((Animal)board[row][col-1]); //remove animal from other player's array                
+               board[row][col-1] = a; //move animal to new pos
+               board[row][col] = null; //make old pos null
+            } 
             //check if its enemys animal or yours
             //also check rank if its enemys animal
          }
