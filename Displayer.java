@@ -25,4 +25,36 @@ public class Displayer {
          }
          System.out.println("-");
    }
+   
+   public void PrintValidMoves( boolean[] arr ){   
+      int num = 1;
+      for(int i = 0; i<arr.length; i++){
+         if(arr[i]){
+            switch(i){
+               case 0:
+                  System.out.println(num + ". Left");
+                  num++;
+                  break;
+               case 1:
+                  System.out.println(num +". Right");
+                  num++;
+                  break;
+               case 2:
+                  System.out.println(num + ". Up");
+                  num++;
+                  break;
+               case 3:
+                  System.out.println(num + ". Down");
+                  num++;
+                  break;
+            }
+         }
+      }
+   }
+   
+   public void PrintValidAnimals( Animal[] arr ){   
+      for(int i = 0; i<arr.length; i++){
+         System.out.println(i+1 + ". " + arr[i]);         
+      }
+   }
 }

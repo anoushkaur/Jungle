@@ -7,8 +7,8 @@ public class Player {
       animals = new Animal[8];
       animals[0] = new Rat(id);
       animals[1] = new Cat(id);
-      animals[2] = new Dog(id);
-      animals[3] = new Wolf(id);
+      animals[2] = new Wolf(id);
+      animals[3] = new Dog(id);
       animals[4] = new Leopard(id);
       animals[5] = new Tiger(id);
       animals[6] = new Lion(id);
