@@ -18,6 +18,19 @@ public class GameSystem {
       allPlayer[0] = new Player(1);
       allPlayer[1] = new Player(2);
       currPlayer = allPlayer[0];
+      for (int i = 0; i< river.length; i++){
+         board[river[i][0]][river[i][1]] = new River();
+      }
+      
+      board[0][2] = new Trap(P1);
+      board[0][3] = new Base(P1);
+      board[0][4] = new Trap(P1);
+      board[1][3] = new Trap(P1);
+      board[8][4] = new Trap(P2);
+      board[8][3] = new Base(P2);
+      board[8][2] = new Trap(P2);
+      board[7][3] = new Trap(P2);
+      
       for (int i = 0; i<currPlayer.GetAnimals().length; i++){
          if (currPlayer.GetAnimals()[i] instanceof Lion){
              board[0][0] = allPlayer[0].GetAnimals()[i];
@@ -51,20 +64,7 @@ public class GameSystem {
              board[2][6] = allPlayer[0].GetAnimals()[i];
              board[6][0] = allPlayer[1].GetAnimals()[i];
          }
-      }
-      for (int i = 0; i< river.length; i++){
-         board[river[i][0]][river[i][1]] = new River();
-      }
-
-      board[0][2] = new Trap(P1);
-      board[0][3] = new Base(P1);
-      board[0][4] = new Trap(P1);
-      board[1][3] = new Trap(P1);
-      board[8][4] = new Trap(P2);
-      board[8][3] = new Base(P2);
-      board[8][2] = new Trap(P2);
-      board[7][3] = new Trap(P2);
-     
+      }     
    }
     
    private boolean isOnRiver(Rat r){
@@ -82,13 +82,22 @@ public class GameSystem {
       if (pred.GetOwner() == prey.GetOwner()){
          return false;
       }
+      if (pred instanceof Rat && prey instanceof Rat){
+         if ((isOnRiver((Rat)pred) && isOnRiver((Rat)prey) || (!isOnRiver((Rat)pred) && !isOnRiver((Rat)prey)))){
+            return true;
+         }
+         return false;
+      }
       else if(pred instanceof Rat && prey instanceof Elephant && !isOnRiver((Rat)pred)){
          return true;
       }
+      else if (pred instanceof Elephant && prey instanceof Rat){
+         return false;
+      }
       else if ( pred.GetRank() >= prey.GetRank()){
          return true;
-     }
-     return false;
+      }
+      return false;
    }
    
    private int[] getValidLeft(Animal a){
@@ -96,7 +105,7 @@ public class GameSystem {
       int col = getAnimalPos(a)[1];
       //river (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER){
-         if(board[row][col-1] instanceof River){
+         if(board[row][col-1] instanceof River && board[row][col-2] instanceof River){
             if((board[row][col-3] == null) || (board[row][col-3] instanceof Animal && canEat(a, (Animal)board[row][col-3]))){
                return new int[] {row, col-3};
             }
@@ -124,7 +133,7 @@ public class GameSystem {
       int col = getAnimalPos(a)[1];
       //river (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER){
-         if(board[row][col+1] instanceof River){
+         if(board[row][col+1] instanceof River && board[row][col+2] instanceof River){
             if((board[row][col+3] == null) || (board[row][col+3] instanceof Animal && canEat(a, (Animal)board[row][col+3]))){
                return new int[] {row, col+3};
             }
@@ -155,7 +164,7 @@ public class GameSystem {
       int col = getAnimalPos(a)[1];
       //river (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER){
-         if(board[row-1][col] instanceof River){
+         if(board[row-1][col] instanceof River && board[row-2][col] instanceof River && board[row-3][col] instanceof River){
             if((board[row-4][col] == null) || (board[row-4][col] instanceof Animal && canEat(a, (Animal)board[row-4][col]))){
                return new int[] {row-4, col};
             }
@@ -183,7 +192,7 @@ public class GameSystem {
       int col = getAnimalPos(a)[1];
       //river (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER){
-         if(board[row+1][col] instanceof River){
+         if(board[row+1][col] instanceof River && (board[row+2][col] instanceof River && board[row+3][col] instanceof River)){
             if((board[row+4][col] == null) || (board[row+4][col] instanceof Animal && canEat(a, (Animal)board[row+4][col]))){
                return new int[] {row+4, col};
             }
