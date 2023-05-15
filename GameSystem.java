@@ -49,7 +49,7 @@ public class GameSystem {
              board[7][1] = allPlayer[1].GetAnimals()[i];
          }
          else if (currPlayer.GetAnimals()[i] instanceof Rat){
-             board[2][0] = allPlayer[0].GetAnimals()[i];
+             board[4][3] = allPlayer[0].GetAnimals()[i];
              board[6][6] = allPlayer[1].GetAnimals()[i];
          }
          else if (currPlayer.GetAnimals()[i] instanceof Leopard){
@@ -62,7 +62,7 @@ public class GameSystem {
          }
          else if (currPlayer.GetAnimals()[i] instanceof Elephant){
              board[2][6] = allPlayer[0].GetAnimals()[i];
-             board[6][0] = allPlayer[1].GetAnimals()[i];
+             board[3][3] = allPlayer[1].GetAnimals()[i];
          }
       }     
    }
@@ -179,6 +179,7 @@ public class GameSystem {
          return new int[] {row-1, col};
       }
       if (board[row-1][col] instanceof Animal && canEat(a, (Animal)board[row-1][col])){
+         System.out.println(canEat(a, (Animal)board[row-1][col]));
          return new int[] {row-1, col};
       }
       if (board[row-1][col] instanceof Trap || board[row-1][col] == null){
@@ -278,5 +279,27 @@ public class GameSystem {
          }
       }
       return valid;
+   }
+   
+   public void Move(int dir, Animal a) {
+      int currentRow = getAnimalPos(a)[0];
+      int currentCol = getAnimalPos(a)[1];
+   
+      if (dir == 0) { 
+         board[currentRow][currentCol - 1] = board[currentRow][currentCol];
+         board[currentRow][currentCol] = null;
+      }
+      else if (dir == 1){
+         board[currentRow][currentCol + 1] = board[currentRow][currentCol];
+         board[currentRow][currentCol] = null;
+      }
+      else if (dir == 2){
+         board[currentRow - 1][currentCol] = board[currentRow][currentCol];
+         board[currentRow][currentCol] = null;
+      }
+      else if (dir == 3){
+         board[currentRow + 1][currentCol] = board[currentRow][currentCol];
+         board[currentRow][currentCol] = null;
+      }
    }
 }

@@ -7,7 +7,7 @@ public class Jungle {
       GameSystem gs = new GameSystem();
       Displayer disp = new Displayer();
       Scanner input = new Scanner(System.in);
-      System.out.println(gs.GetBoard()[3][5] instanceof River);
+      //System.out.println(gs.GetBoard()[3][5] instanceof River);
       
       //System.out.println(gs.GetAnimalPos(gs.GetCurrPlayer().GetAnimals()[6])[0]);
       //System.out.println(gs.GetAnimalPos(gs.GetCurrPlayer().GetAnimals()[6])[1]);
@@ -27,11 +27,14 @@ public class Jungle {
             if(moves[i]){
                count ++;
             }
-            if (count == dir){
-               move = i;
+            if (count == dir-1){
+               move = dir - 1;
                break; //save i val
             }
          }
+         System.out.println(move);
+         gs.Move(move, gs.GetCurrPlayer().GetAnimals()[animal-1]);
+         move = 0;
       }
    }
 }
