@@ -5,21 +5,21 @@ public class GameSystem {
    private Player[] allPlayer;
    private Player currPlayer;
    private Piece[][] board = new Piece[9][7];
-   private final int[][] river ={{3,1}, {3,2},{3,4}, {3,5}, {4,1}, {4,2}, {4,4}, {4, 5}, {5,1}, {5,2}, {5,4}, {5, 5}};
+   private final int[][] RIVER ={{3,1}, {3,2},{3,4}, {3,5}, {4,1}, {4,2}, {4,4}, {4, 5}, {5,1}, {5,2}, {5,4}, {5, 5}};
 
-  
-   public final int[][] BLACK_TRAP = {{2,0}, {3,1}, {4,0}};
-   public final int[][] WHITE_TRAP = {{2,8}, {3,7}, {4,8}};
-   public final int[] BLACK_BASE = {3,0};
-   public final int[] WHITE_BASE = {3,8}; 
+  //make private
+  //canswim and istrapped **
+   public final int[][] P1_TRAP = {{0,2}, {1,3}, {0,4}};
+   public final int[][] P2_TRAP = {{8,2}, {7,3}, {8,4}};
+   public final int[][] BASE = {{0,3}, {8,3}};
    
    public GameSystem(){
       allPlayer = new Player[2]; 
       allPlayer[0] = new Player(1);
       allPlayer[1] = new Player(2);
       currPlayer = allPlayer[0];
-      for (int i = 0; i< river.length; i++){
-         board[river[i][0]][river[i][1]] = new River();
+      for (int i = 0; i< RIVER.length; i++){
+         board[RIVER[i][0]][RIVER[i][1]] = new River();
       }
       
       board[0][2] = new Trap(P1);
@@ -70,12 +70,31 @@ public class GameSystem {
    private boolean isOnRiver(Rat r){
       int row = getAnimalPos(r)[0];
       int col = getAnimalPos(r)[1];
-      for (int i = 0; i<river.length; i++){
-         if(row == river[i][0] && col == river[i][1]){
+      for (int i = 0; i<RIVER.length; i++){
+         if(row == RIVER[i][0] && col == RIVER[i][1]){
             return true;
          }
       }
       return false;
+   }
+   
+   //to set rank to 0 & replace *
+   private Player isOnTrap(Animal a){
+      int row = getAnimalPos(a)[0];
+      int col = getAnimalPos(a)[1];
+      
+      for (int i = 0; i<P1_TRAP.length; i++){
+         if (P1_TRAP[i][0] == row && P1_TRAP[i][1] == col){
+            return allPlayer[0];
+         }
+      }
+      
+      for (int i = 0; i<P2_TRAP.length; i++){
+         if (P2_TRAP[i][0] == row && P2_TRAP[i][1] == col){
+            return allPlayer[1];
+         }
+      }
+      return null;
    }
    
    private boolean canEat(Animal pred, Animal prey){
@@ -103,7 +122,7 @@ public class GameSystem {
    private int[] getValidLeft(Animal a){
       int row = getAnimalPos(a)[0];
       int col = getAnimalPos(a)[1];
-      //river (lion/tiger)
+      //RIVER (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER){
          if(board[row][col-1] instanceof River && board[row][col-2] instanceof River){
             if((board[row][col-3] == null) || (board[row][col-3] instanceof Animal && canEat(a, (Animal)board[row][col-3]))){
@@ -111,7 +130,7 @@ public class GameSystem {
             }
          }
       }     
-      //river (everyone else)
+      //RIVER (everyone else)
       if(board[row][col-1] instanceof River && a instanceof Rat){
          return new int[] {row, col-1};
       }
@@ -131,7 +150,7 @@ public class GameSystem {
    private int[] getValidRight(Animal a){
       int row = getAnimalPos(a)[0];
       int col = getAnimalPos(a)[1];
-      //river (lion/tiger)
+      //RIVER (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER){
          if(board[row][col+1] instanceof River && board[row][col+2] instanceof River){
             if((board[row][col+3] == null) || (board[row][col+3] instanceof Animal && canEat(a, (Animal)board[row][col+3]))){
@@ -139,7 +158,7 @@ public class GameSystem {
             }
          }
       }     
-      //river (everyone else)
+      //RIVER (everyone else)
       if(board[row][col+1] instanceof River && a instanceof Rat){
          return new int[] {row, col+1};
       }
@@ -162,7 +181,7 @@ public class GameSystem {
    private int[] getValidUp(Animal a){
       int row = getAnimalPos(a)[0];
       int col = getAnimalPos(a)[1];
-      //river (lion/tiger)
+      //RIVER (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER){
          if(board[row-1][col] instanceof River && board[row-2][col] instanceof River && board[row-3][col] instanceof River){
             if((board[row-4][col] == null) || (board[row-4][col] instanceof Animal && canEat(a, (Animal)board[row-4][col]))){
@@ -170,7 +189,7 @@ public class GameSystem {
             }
          }
       }     
-      //river (everyone else)
+      //RIVER (everyone else)
       if(board[row-1][col] instanceof River && a instanceof Rat){
          return new int[] {row-1, col};
       }
@@ -191,7 +210,7 @@ public class GameSystem {
    private int[] getValidDown(Animal a){
       int row = getAnimalPos(a)[0];
       int col = getAnimalPos(a)[1];
-      //river (lion/tiger)
+      //RIVER (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER){
          if(board[row+1][col] instanceof River && (board[row+2][col] instanceof River && board[row+3][col] instanceof River)){
             if((board[row+4][col] == null) || (board[row+4][col] instanceof Animal && canEat(a, (Animal)board[row+4][col]))){
@@ -199,7 +218,7 @@ public class GameSystem {
             }
          }
       }     
-      //river (everyone else)
+      //RIVER (everyone else)
       if(board[row+1][col] instanceof River && a instanceof Rat){
          return new int[] {row+1, col};
       }
@@ -248,7 +267,7 @@ public class GameSystem {
       currPlayer = allPlayer[(currPlayer.GetId() * -1) + 2];
    }
    
-   //river
+   //RIVER
    //trap
    //base
    //animal
@@ -284,22 +303,56 @@ public class GameSystem {
    public void Move(int dir, Animal a) {
       int currentRow = getAnimalPos(a)[0];
       int currentCol = getAnimalPos(a)[1];
-   
-      if (dir == 0) { 
-         board[currentRow][currentCol - 1] = board[currentRow][currentCol];
+      Player trapper = isOnTrap(a);
+      Player otherPlayer = allPlayer[currPlayer.GetId() * -1 + 2];
+      Piece newDir;
+
+      // dealing w location
+      if(a instanceof Rat && isOnRiver((Rat)a)){   
+         board[currentRow][currentCol] = new River();
+      }
+      else if (trapper != null){
+         if (trapper == otherPlayer){
+            a.SetRank(a.ORIGRANK);
+         }
+         board[currentRow][currentCol] = new Trap(trapper.GetId());
+      }
+      else {
          board[currentRow][currentCol] = null;
+      }
+      
+      //dealing w dest
+      if (dir == 0) { 
+         newDir = board[currentRow][currentCol - 1];
+         board[currentRow][currentCol - 1] = a;
       }
       else if (dir == 1){
-         board[currentRow][currentCol + 1] = board[currentRow][currentCol];
-         board[currentRow][currentCol] = null;
+         newDir = board[currentRow][currentCol + 1];
+         board[currentRow][currentCol + 1] = a;
       }
       else if (dir == 2){
-         board[currentRow - 1][currentCol] = board[currentRow][currentCol];
-         board[currentRow][currentCol] = null;
+         newDir = board[currentRow - 1][currentCol];
+         board[currentRow - 1][currentCol] = a;
       }
-      else if (dir == 3){
-         board[currentRow + 1][currentCol] = board[currentRow][currentCol];
-         board[currentRow][currentCol] = null;
+      else {
+         newDir = board[currentRow + 1][currentCol];
+         board[currentRow + 1][currentCol] = a;
       }
+      if (newDir instanceof Trap && ((Trap)newDir).GetOwner() == otherPlayer.GetId()){
+         a.SetRank(0);
+      }
+      else if (newDir instanceof Animal){
+         otherPlayer.RemoveAnimal((Animal)newDir);
+      }
+   }
+   
+   public boolean CheckWinner(){
+      Player otherPlayer = allPlayer[currPlayer.GetId() * -1 + 2];
+      if (otherPlayer.GetAnimals().length == 0){
+         return true;
+      }
+      int otherRow = BASE[otherPlayer.GetId()-1][0];
+      int otherCol = BASE[otherPlayer.GetId()-1][1];
+      return board[otherRow][otherCol] instanceof Animal;
    }
 }

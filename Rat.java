@@ -1,5 +1,4 @@
-public class Rat extends Animal {
-
+public class Rat extends Animal {   
    public Rat(int owner){
       super(true, Animal.RAT, false, owner);
    }
