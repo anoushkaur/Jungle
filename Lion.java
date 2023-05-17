@@ -1,4 +1,5 @@
 public class Lion extends Animal {
+
    public Lion(int owner){
       super(false, Animal.LION, false, owner);
    }

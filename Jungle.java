@@ -28,14 +28,17 @@ public class Jungle {
             if (moves[i]){
                count ++;
             }
-            if (count == dir-1){
-               move = dir - 1;
+            if (count == dir){
+               move = i;
                break; //save i val
             }
          }
          System.out.println(move); 
          gs.Move(move, gs.GetCurrPlayer().GetAnimals()[animal-1]);
-         move = 0;
+         if (gs.CheckWinner()){
+            break;
+         }
       }
+      System.out.println("Player " +  gs.GetCurrPlayer().GetId() + " wins!");
    }
 }

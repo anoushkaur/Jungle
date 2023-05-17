@@ -1,4 +1,7 @@
 public class Wolf extends Animal {
+
+   public static final int ORIGRANK = Animal.WOLF;
+
    public Wolf(int owner){
       super(false, Animal.WOLF, false, owner);
    }

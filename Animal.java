@@ -10,12 +10,15 @@ public abstract class Animal extends Piece {
    private boolean canSwim;
    private boolean isTrapped;
    private int rank;
+   private int trapRank;
    private int owner;
+   public final int ORIGRANK;
    
    public Animal(boolean canSwim, int rank, boolean isTrapped, int owner){
       this.owner = owner;
       this.canSwim = canSwim;
       this.rank = rank;
+      this.ORIGRANK = rank;
       this.isTrapped = isTrapped;
    }
    
@@ -38,6 +41,7 @@ public abstract class Animal extends Piece {
    public void SetRank(int rank){
       this.rank = rank;
    }
+   
    public boolean GetIsTrapped(){
       return this.isTrapped;
    }
