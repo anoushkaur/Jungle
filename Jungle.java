@@ -8,7 +8,7 @@ public class Jungle {
       Displayer disp = new Displayer();
       Scanner input = new Scanner(System.in);
       //System.out.println(gs.GetBoard()[3][5] instanceof River);
-      
+            
       //System.out.println(gs.GetAnimalPos(gs.GetCurrPlayer().GetAnimals()[6])[0]);
       //System.out.println(gs.GetAnimalPos(gs.GetCurrPlayer().GetAnimals()[6])[1]);
       
@@ -37,7 +37,7 @@ public class Jungle {
             }
          }
          System.out.println(move); 
-         gs.Move(move, gs.GetCurrPlayer().GetAnimals()[animal-1]);
+         gs.Move(move, animals[animal-1]);
          if (gs.CheckWinner()){
             break;
          } else {

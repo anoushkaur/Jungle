@@ -68,6 +68,8 @@ public class GameSystem {
          }
       }     
    }
+   
+   
     
    private boolean isOnRiver(Rat r){
       int row = getAnimalPos(r)[0];
@@ -201,7 +203,6 @@ public class GameSystem {
          return new int[] {row-1, col};
       }
       if (board[row-1][col] instanceof Animal && canEat(a, (Animal)board[row-1][col])){
-         System.out.println(canEat(a, (Animal)board[row-1][col]));
          return new int[] {row-1, col};
       }
       if (board[row-1][col] instanceof Trap || board[row-1][col] == null){
@@ -309,8 +310,28 @@ public class GameSystem {
       Player trapper = isOnTrap(a);
       Player otherPlayer = allPlayer[currPlayer.GetId() * -1 + 2];
       Piece newDir;
+      int newRow;
+      int newCol;
+      
+      // get new location
+      if (dir == 0) { 
+         newRow = getValidLeft(a)[0];
+         newCol = getValidLeft(a)[1];
+      }
+      else if (dir == 1){
+         newRow = getValidRight(a)[0];
+         newCol = getValidRight(a)[1];
+      }
+      else if (dir == 2){
+         newRow = getValidUp(a)[0];
+         newCol = getValidUp(a)[1];
+      }
+      else {
+         newRow = getValidDown(a)[0];
+         newCol = getValidDown(a)[1];
+      }
 
-      // dealing w location
+      // dealing w current location
       if(a instanceof Rat && isOnRiver((Rat)a)){   
          board[currentRow][currentCol] = new River();
       }
@@ -324,23 +345,10 @@ public class GameSystem {
          board[currentRow][currentCol] = null;
       }
       
-      //dealing w dest
-      if (dir == 0) { 
-         newDir = board[currentRow][currentCol - 1];
-         board[currentRow][currentCol - 1] = a;
-      }
-      else if (dir == 1){
-         newDir = board[currentRow][currentCol + 1];
-         board[currentRow][currentCol + 1] = a;
-      }
-      else if (dir == 2){
-         newDir = board[currentRow - 1][currentCol];
-         board[currentRow - 1][currentCol] = a;
-      }
-      else {
-         newDir = board[currentRow + 1][currentCol];
-         board[currentRow + 1][currentCol] = a;
-      }
+      //dealing w new destination
+      newDir = board[newRow][newCol];
+      board[newRow][newCol] = a;
+
       if (newDir instanceof Trap && ((Trap)newDir).GetOwner() == otherPlayer.GetId()){
          a.SetRank(0);
       }
@@ -351,7 +359,7 @@ public class GameSystem {
    
    public boolean CheckWinner(){
       Player otherPlayer = allPlayer[currPlayer.GetId() * -1 + 2];
-      if (otherPlayer.GetAnimals().length == 0){
+      if(otherPlayer.isDeadAnimals()){
          return true;
       }
       int otherRow = BASE[otherPlayer.GetId()-1][0];

@@ -22,20 +22,25 @@ public class Player {
    public void SetId(int id){
       this.id = id;
    }
-   
+      
    public Animal[] GetAnimals(){
       return this.animals;
    }
    
    public void RemoveAnimal(Animal a){
-      Animal[] temp = new Animal[ animals.length - 1 ];
-      int counter = 0;
       for( int i = 0; i < animals.length; i++ ) {
-         if(this.animals[i].GetRank() != a.GetRank()){
-            temp[counter] = animals[i];
-            counter++;
+         if(this.animals[i] != null && this.animals[i].GetRank() == a.GetRank()){
+            animals[i] = null;
          }
       }
-      this.animals = temp;
+   }
+   
+   public boolean isDeadAnimals(){
+      for (int i = 0; i<animals.length; i++){
+         if (this.animals[i] != null){
+         return false;
+         }
+      }
+      return true;
    }
 }
