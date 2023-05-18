@@ -127,7 +127,8 @@ public class GameSystem {
       //RIVER (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER){
          if(board[row][col-1] instanceof River && board[row][col-2] instanceof River){
-            if((board[row][col-3] == null) || (board[row][col-3] instanceof Animal && canEat(a, (Animal)board[row][col-3]))){
+            //if((board[row][col-3] == null) || (board[row][col-3] instanceof Animal && canEat(a, (Animal)board[row][col-3]))){
+              if((board[row][col-3] == null) ||( (board[row][col-3] instanceof Animal && canEat(a, (Animal)board[row][col-3])))){
                return new int[] {row, col-3};
             }
          }

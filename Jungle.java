@@ -15,16 +15,15 @@ public class Jungle {
       while (true){ // Player's Menu
          disp.PrintBoard(gs.GetBoard()); // Displaying board
          Animal[] animals = gs.GetCurrPlayer().GetAnimals();
+         
          disp.PrintValidAnimals(animals); // Displaying animals
-         System.out.println("Choose an animal"); // Prompt user for which animal to move
+         System.out.println("Choose animal"); // Prompt user for which animal to move
          int animal = input.nextInt();
+         
          boolean[] moves = gs.PossibleMoves(animals[animal-1]);
          disp.PrintValidMoves(moves); // Displaying possible moves
-         int dir;
-         do {
-            System.out.println("Choose a direction:"); // Prompt user for direction
-            dir = input.nextInt();
-         } while (dir < 1 || dir > 4);
+         System.out.println("Choose dir"); // Prompt user for direction
+         int dir = input.nextInt();
          
          int count = 0;
          int move = 0;
@@ -39,9 +38,9 @@ public class Jungle {
          }
          System.out.println(move); 
          gs.Move(move, gs.GetCurrPlayer().GetAnimals()[animal-1]);
-         if (gs.CheckWinner()){ // Checks if theres winner and break if there is
+         if (gs.CheckWinner()){
             break;
-         } else { // Switches player if there's not
+         } else {
             gs.SwitchPlayer();
          }
       }
