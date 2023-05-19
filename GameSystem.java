@@ -49,9 +49,9 @@ public class GameSystem {
              board[7][1] = allPlayer[1].GetAnimals()[i];
          }
          else if (currPlayer.GetAnimals()[i] instanceof Rat){
-             //board[4][3] = allPlayer[0].GetAnimals()[i];
-             board[2][0] = allPlayer[0].GetAnimals()[i];
-             board[6][6] = allPlayer[1].GetAnimals()[i];
+             board[4][3] = allPlayer[0].GetAnimals()[i];
+             //board[2][0] = allPlayer[0].GetAnimals()[i];
+             board[2][3] = allPlayer[1].GetAnimals()[i];
          }
          else if (currPlayer.GetAnimals()[i] instanceof Leopard){
              board[2][2] = allPlayer[0].GetAnimals()[i];
@@ -63,8 +63,8 @@ public class GameSystem {
          }
          else if (currPlayer.GetAnimals()[i] instanceof Elephant){
              board[2][6] = allPlayer[0].GetAnimals()[i];
-             //board[3][3] = allPlayer[1].GetAnimals()[i];
-             board[6][0] = allPlayer[1].GetAnimals()[i];
+             board[3][3] = allPlayer[1].GetAnimals()[i];
+             //board[6][0] = allPlayer[1].GetAnimals()[i];
          }
       }     
    }
