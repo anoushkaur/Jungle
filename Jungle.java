@@ -24,11 +24,12 @@ public class Jungle {
          disp.PrintValidAnimals(animals); // Displaying animals
          System.out.println("Choose animal"); // Prompt user for which animal to move
          int animal = input.nextInt();
-         while (animal < 1 || animal > 8) {
+         
+         /*while (animal < 1 || animal > 8) { // If animal is not in range (1-8)
             System.out.println("Enter a valid animal: ");
             animal = input.nextInt();
          }
-         for (int i = 0; i < p1Animals.length; i++) {
+         for (int i = 0; i < p1Animals.length; i++) { // If animal is in the correct range
             if (gs.GetCurrPlayer().GetId() == 1 && animals[i] != null) {
                p1Animals[i] = animals[i].GetRank();
                System.out.println(p1Animals[i]);
@@ -42,10 +43,10 @@ public class Jungle {
                p2Animals[i] = 0;
             }
          }
-         System.out.println(animal);
-         while (!animalFound) {
+         System.out.println(animal); */
+         while (!animalFound) { // If animal is not in the correct range which are 1 to 8
             for (int i = 0; i < p1Animals.length; i++) {
-
+               // If 
                if (gs.GetCurrPlayer().GetId() == 1 && p1Animals[i] == animal) {
                   animalFound = true;
                   break;
