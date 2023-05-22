@@ -32,19 +32,24 @@ public class Jungle {
          for (int i = 0; i < p1Animals.length; i++) { // If animal is in the correct range
             if (gs.GetCurrPlayer().GetId() == 1 && animals[i] != null) {
                p1Animals[i] = animals[i].GetRank();
-               System.out.println(p1Animals[i]);
+               //System.out.println(p1Animals[i]);
             } else {
                p1Animals[i] = 0;
             }
             if (gs.GetCurrPlayer().GetId() == 2 && animals[i] != null) {
                p2Animals[i] = animals[i].GetRank();
-               System.out.println(p2Animals[i]);
+               //System.out.println(p2Animals[i]);
             } else {
                p2Animals[i] = 0;
             }
          }
+<<<<<<< Updated upstream
          System.out.println(animal); */
          while (!animalFound) { // If animal is not in the correct range which are 1 to 8
+=======
+         //System.out.println(animal);
+         while (!animalFound) {
+>>>>>>> Stashed changes
             for (int i = 0; i < p1Animals.length; i++) {
                // If 
                if (gs.GetCurrPlayer().GetId() == 1 && p1Animals[i] == animal) {
@@ -83,7 +88,7 @@ public class Jungle {
                      break; //save i val
                   }
                }
-               System.out.println(move);
+               //System.out.println(move);
                gs.Move(move, animals[animal - 1]);
                if (gs.CheckWinner()) {
                   break;
