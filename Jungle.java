@@ -13,9 +13,6 @@ public class Jungle {
       int[] possibleMoves = new int[4];
       boolean animalFound = false;
 
-      //System.out.println(gs.GetAnimalPos(gs.GetCurrPlayer().GetAnimals()[6])[0]);
-      //System.out.println(gs.GetAnimalPos(gs.GetCurrPlayer().GetAnimals()[6])[1]);
-
       while (true) { // Player's Menu
          animalFound = false;
          disp.PrintBoard(gs.GetBoard()); // Displaying board
@@ -25,31 +22,20 @@ public class Jungle {
          System.out.println("Choose animal"); // Prompt user for which animal to move
          int animal = input.nextInt();
          
-         /*while (animal < 1 || animal > 8) { // If animal is not in range (1-8)
-            System.out.println("Enter a valid animal: ");
-            animal = input.nextInt();
-         }
          for (int i = 0; i < p1Animals.length; i++) { // If animal is in the correct range
             if (gs.GetCurrPlayer().GetId() == 1 && animals[i] != null) {
                p1Animals[i] = animals[i].GetRank();
-               //System.out.println(p1Animals[i]);
             } else {
                p1Animals[i] = 0;
             }
             if (gs.GetCurrPlayer().GetId() == 2 && animals[i] != null) {
                p2Animals[i] = animals[i].GetRank();
-               //System.out.println(p2Animals[i]);
             } else {
                p2Animals[i] = 0;
             }
          }
-<<<<<<< Updated upstream
-         System.out.println(animal); */
+         
          while (!animalFound) { // If animal is not in the correct range which are 1 to 8
-=======
-         //System.out.println(animal);
-         while (!animalFound) {
->>>>>>> Stashed changes
             for (int i = 0; i < p1Animals.length; i++) {
                // If 
                if (gs.GetCurrPlayer().GetId() == 1 && p1Animals[i] == animal) {
@@ -88,7 +74,7 @@ public class Jungle {
                      break; //save i val
                   }
                }
-               //System.out.println(move);
+               System.out.println(move);
                gs.Move(move, animals[animal - 1]);
                if (gs.CheckWinner()) {
                   break;
