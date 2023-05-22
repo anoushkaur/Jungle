@@ -22,6 +22,13 @@ public class Jungle {
          System.out.println("Choose animal"); // Prompt user for which animal to move
          int animal = input.nextInt();
          
+<<<<<<< Updated upstream
+=======
+         /*while (animal < 1 || animal > 8) { // If animal is not in range (1-8)
+            System.out.println("Enter a valid animal: ");
+            animal = input.nextInt();
+         }*/
+>>>>>>> Stashed changes
          for (int i = 0; i < p1Animals.length; i++) { // If animal is in the correct range
             if (gs.GetCurrPlayer().GetId() == 1 && animals[i] != null) {
                p1Animals[i] = animals[i].GetRank();
@@ -34,6 +41,10 @@ public class Jungle {
                p2Animals[i] = 0;
             }
          }
+<<<<<<< Updated upstream
+=======
+         System.out.println(animal); 
+>>>>>>> Stashed changes
          
          while (!animalFound) { // If animal is not in the correct range which are 1 to 8
             for (int i = 0; i < p1Animals.length; i++) {
