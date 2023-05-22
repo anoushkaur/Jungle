@@ -35,46 +35,61 @@ public class Jungle {
             }
          }
          
-         while (!animalFound) { // If animal is not in the correct range which are 1 to 8
+         while (!animalFound) { // while animal is not found in arr
             for (int i = 0; i < p1Animals.length; i++) {
-               // If 
+               // If p1 animal is found
                if (gs.GetCurrPlayer().GetId() == 1 && p1Animals[i] == animal) {
                   animalFound = true;
                   break;
-               }
+               }//if p2 animal is found
                if (gs.GetCurrPlayer().GetId() == 2 && p2Animals[i] == animal) {
                   animalFound = true;
                   break;
                }
             }
-            if (!animalFound) {
+            if (!animalFound) { // error message for wrong animal
                System.out.println("Enter a valid animal: ");
                animal = input.nextInt();
             }
          }
 
-         if (animalFound) {
+         if (animalFound) { //if animal exists 
             boolean[] moves = gs.PossibleMoves(animals[animal - 1]);
-            if (moves[0] == false && moves[1] == false && moves[2] == false && moves[3] == false){
+            if (moves[0] == false && moves[1] == false && moves[2] == false && moves[3] == false){//if no moves avail
                System.out.println("No Moves Available! Choose a different animal below: ");
             }
-            else {
+            else {//if at least 1 move avail
                disp.PrintValidMoves(moves); // Displaying possible moves
                System.out.println("Choose dir"); // Prompt user for direction
                int dir = input.nextInt();
-   
-               int count = 0;
+               //for loop checking how many moves are true in the possible moves arr
+               int count = 0; 
                int move = 0;
+               int[] temp = new int[4];
                for (int i = 0; i < moves.length; i++) {
                   if (moves[i]) {
+                     temp[count] = i;
                      count++;
                   }
-                  if (count == dir) {
-                     move = i;
-                     break; //save i val
-                  }
                }
-               gs.Move(move, animals[animal - 1]);
+               while (dir < 1 || dir > count){
+                  System.out.println("Enter a valid direction: ");
+                  dir = input.nextInt();
+               }
+               gs.Move(temp[dir-1], animals[animal - 1]);
+              // int[] temp = new int[count];
+               /*for (int i = 0; i<temp.length; i++){
+                  if (moves[i]){
+                     temp[i] = i;
+                     System.out.println(temp[i]);
+                  }
+                  if (dir == temp[i] + 1){
+                     gs.Move(temp[i], animals[animal - 1]);
+                     break;
+                  }
+               }*/
+              
+               //gs.Move(move, animals[animal - 1]);
                if (gs.CheckWinner()) {
                   break;
                } else {
