@@ -7,33 +7,21 @@ public abstract class Animal extends Piece {
    public static final int TIGER = 6;
    public static final int LION = 7;
    public static final int ELEPHANT = 8;
-   private boolean canSwim;
-   private boolean isTrapped;
    private int rank;
    private int trapRank;
    private int owner;
    public final int ORIGRANK;
    
-   public Animal(boolean canSwim, int rank, boolean isTrapped, int owner){
+   public Animal(int rank, int owner){
       this.owner = owner;
-      this.canSwim = canSwim;
       this.rank = rank;
       this.ORIGRANK = rank;
-      this.isTrapped = isTrapped;
    }
    
    public int GetOwner(){
       return this.owner;
    }
-   
-   public boolean GetCanSwim(){
-      return this.canSwim;
-   }
-   
-   public void SetCanSwim(boolean canSwim){
-      this.canSwim = canSwim;
-   }
-   
+      
    public int GetRank(){
       return this.rank;
    }
@@ -41,12 +29,4 @@ public abstract class Animal extends Piece {
    public void SetRank(int rank){
       this.rank = rank;
    }
-   
-   public boolean GetIsTrapped(){
-      return this.isTrapped;
-   }
-   
-   public void SetIsTrapped(boolean isTrapped){
-      this.isTrapped = isTrapped;
-   } 
 }

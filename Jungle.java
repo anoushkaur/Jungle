@@ -24,12 +24,12 @@ public class Jungle {
          
          for (int i = 0; i < p1Animals.length; i++) { // If animal is in the correct range
             if (gs.GetCurrPlayer().GetId() == 1 && animals[i] != null) {
-               p1Animals[i] = animals[i].GetRank();
+               p1Animals[i] = animals[i].ORIGRANK;
             } else {
                p1Animals[i] = 0;
             }
             if (gs.GetCurrPlayer().GetId() == 2 && animals[i] != null) {
-               p2Animals[i] = animals[i].GetRank();
+               p2Animals[i] = animals[i].ORIGRANK;
             } else {
                p2Animals[i] = 0;
             }

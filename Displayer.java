@@ -1,4 +1,9 @@
 public class Displayer {
+   /**
+    * Prints the game board.
+    *
+    * @param board the 2D array representing the game board
+   */
    public void PrintBoard( Piece[][] board ) {
       //prints a dotted line for every row except the last
       for(int i = 0; i<board.length; i++){
@@ -26,6 +31,11 @@ public class Displayer {
          System.out.println("-");
    }
    
+   /**
+    * Prints the valid moves based on the given array.
+    *
+    * @param arr the boolean array representing the valid moves
+   */
    public void PrintValidMoves( boolean[] arr ){   
       int num = 1;
       for(int i = 0; i<arr.length; i++){
@@ -52,10 +62,15 @@ public class Displayer {
       }
    }
    
+   /**
+    * Prints the valid animals based on the given array.
+    *
+    * @param arr the array of animals representing the valid animals
+   */
    public void PrintValidAnimals( Animal[] arr ){   
       for(int i = 0; i<arr.length; i++){
          if (arr[i] != null){
-            System.out.println(arr[i].GetRank() + ". " + arr[i]);  
+            System.out.println(arr[i].ORIGRANK + ". " + arr[i]);  
          }       
       }
    }
