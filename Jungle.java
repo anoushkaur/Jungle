@@ -77,19 +77,6 @@ public class Jungle {
                   dir = input.nextInt();
                }
                gs.Move(temp[dir-1], animals[animal - 1]);
-              // int[] temp = new int[count];
-               /*for (int i = 0; i<temp.length; i++){
-                  if (moves[i]){
-                     temp[i] = i;
-                     System.out.println(temp[i]);
-                  }
-                  if (dir == temp[i] + 1){
-                     gs.Move(temp[i], animals[animal - 1]);
-                     break;
-                  }
-               }*/
-              
-               //gs.Move(move, animals[animal - 1]);
                if (gs.CheckWinner()) {
                   break;
                } else {
