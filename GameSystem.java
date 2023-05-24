@@ -1,7 +1,4 @@
 public class GameSystem {
-   public final static int RIV = 0;
-   public final static int P1 = 1;
-   public final static int P2 = 2;
    private Player[] allPlayer;
    private Player currPlayer;
    private Piece[][] board = new Piece[9][7];
@@ -11,7 +8,7 @@ public class GameSystem {
    //canswim and istrapped **
    private final int[][] P1_TRAP = {{0,2}, {1,3}, {0,4}};
    private final int[][] P2_TRAP = {{8,2}, {7,3}, {8,4}};
-   public final int[][] BASE = {{0,3}, {8,3}};
+   private final int[][] BASE = {{0,3}, {8,3}};
    
    /**
     * Constructs a new instance of the GameSystem class.
@@ -27,14 +24,14 @@ public class GameSystem {
          board[RIVER[i][0]][RIVER[i][1]] = new River();
       }
 
-      board[0][2] = new Trap(P1);
-      board[0][3] = new Base(P1);
-      board[0][4] = new Trap(P1);
-      board[1][3] = new Trap(P1);
-      board[8][4] = new Trap(P2);
-      board[8][3] = new Base(P2);
-      board[8][2] = new Trap(P2);
-      board[7][3] = new Trap(P2);
+      board[0][2] = new Trap(1);
+      board[0][3] = new Base(1);
+      board[0][4] = new Trap(1);
+      board[1][3] = new Trap(1);
+      board[8][4] = new Trap(2);
+      board[8][3] = new Base(2);
+      board[8][2] = new Trap(2);
+      board[7][3] = new Trap(2);
 
       for (int i = 0; i < currPlayer.GetAnimals().length; i++) {
          if (currPlayer.GetAnimals()[i] instanceof Lion) {
@@ -146,26 +143,17 @@ public class GameSystem {
          if (board[row][col - 1] instanceof River && board[row][col - 2] instanceof River) {
             //if((board[row][col-3] == null) || (board[row][col-3] instanceof Animal && canEat(a, (Animal)board[row][col-3]))){
             if ((board[row][col - 3] == null) || ((board[row][col - 3] instanceof Animal && canEat(a, (Animal) board[row][col - 3])))) {
-               return new int[] {
-                  row,
-                  col - 3
-               };
+               return new int[] {row,col - 3};
             }
          }
       }
       //RIVER (everyone else)
       if (board[row][col - 1] instanceof River && a instanceof Rat) {
-         return new int[] {
-            row,
-            col - 1
-         };
+         return new int[] {row,col - 1};
       }
       //not own base
       if ((board[row][col - 1] instanceof Base) && (((Base) board[row][col - 1]).GetOwner() != a.GetOwner())) {
-         return new int[] {
-            row,
-            col - 1
-         };
+         return new int[] {row,col - 1};
       }
       if (board[row][col - 1] instanceof Animal && canEat(a, (Animal) board[row][col - 1])) {
          return new int[] {
@@ -297,17 +285,14 @@ public class GameSystem {
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER) {
          if (board[row + 1][col] instanceof River && (board[row + 2][col] instanceof River && board[row + 3][col] instanceof River)) {
             if ((board[row + 4][col] == null) || (board[row + 4][col] instanceof Animal && canEat(a, (Animal) board[row + 4][col]))) {
-               return new int[] {
-                  row + 4, col
-               };
+               return new int[] {row + 4, col};
             }
          }
       }
       //RIVER (everyone else)
       if (board[row + 1][col] instanceof River && a instanceof Rat) {
          return new int[] {
-            row + 1, col
-         };
+            row + 1, col};
       }
       //not own base
       if ((board[row + 1][col] instanceof Base) && (((Base) board[row + 1][col]).GetOwner() != a.GetOwner())) {

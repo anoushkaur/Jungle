@@ -8,7 +8,6 @@ public abstract class Animal extends Piece {
    public static final int LION = 7;
    public static final int ELEPHANT = 8;
    private int rank;
-   private int trapRank;
    private int owner;
    public final int ORIGRANK;
    
