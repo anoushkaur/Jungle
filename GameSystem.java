@@ -3,9 +3,6 @@ public class GameSystem {
    private Player currPlayer;
    private Piece[][] board = new Piece[9][7];
    private final int[][] RIVER = {{3,1}, {3,2},{3,4}, {3,5}, {4,1}, {4,2}, {4,4}, {4, 5}, {5,1}, {5,2}, {5,4}, {5, 5}};
-
-   //make private
-   //canswim and istrapped **
    private final int[][] P1_TRAP = {{0,2}, {1,3}, {0,4}};
    private final int[][] P2_TRAP = {{8,2}, {7,3}, {8,4}};
    private final int[][] BASE = {{0,3}, {8,3}};
