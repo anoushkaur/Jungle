@@ -16,7 +16,7 @@ public class Tiger extends Animal {
     */
    @Override
    public String toString(){
-      if (this.GetOwner() == GameSystem.P1){
+      if (this.GetOwner() == 1){
          return ("TIG(" + GetRank() +")"); //player 1 
       }
       return ("tig(" + GetRank() +")"); //player 2

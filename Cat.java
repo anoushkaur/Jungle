@@ -16,7 +16,7 @@ public class Cat extends Animal {
     */
     @Override
    public String toString(){
-      if (this.GetOwner() == GameSystem.P1){
+      if (this.GetOwner() == 1){
          return ("CAT(" + GetRank() +")"); //player 1 
       }
       return ("cat(" + GetRank() +")"); //player 2

@@ -16,7 +16,7 @@ public class Elephant extends Animal{
     */
     @Override
    public String toString(){
-      if (this.GetOwner() == GameSystem.P1){
+      if (this.GetOwner() == 1){
          return ("ELE(" + GetRank() +")"); //player 1 
       }
       return ("ele(" + GetRank() +")"); //player 2

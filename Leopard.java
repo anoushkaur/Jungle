@@ -16,7 +16,7 @@ public class Leopard extends Animal {
     */
    @Override
    public String toString(){
-      if (this.GetOwner() == GameSystem.P1){
+      if (this.GetOwner() == 1){
          return ("LEO(" + GetRank() +")"); //player 1 
       }
       return ("leo(" + GetRank() +")"); //player 2
