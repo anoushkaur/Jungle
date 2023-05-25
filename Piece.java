@@ -1,4 +1,6 @@
 public abstract class Piece {
+   
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Returns a string representation of the piece.
     * This method must be implemented by subclasses.

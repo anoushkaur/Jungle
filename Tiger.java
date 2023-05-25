@@ -1,5 +1,6 @@
 public class Tiger extends Animal {
    
+   // DEVELOPED BY: SOFEA
    /**
     * Constructs a new Tiger object with the specified owner.
     *
@@ -9,6 +10,7 @@ public class Tiger extends Animal {
       super(Animal.TIGER, owner);
    }
    
+   // DEVELOPED BY: SOFEA
    /**
     * Returns a string representation of the Tiger.
     *

@@ -1,5 +1,6 @@
 public class Leopard extends Animal { 
    
+   // DEVELOPED BY: SOFEA
    /**
     * Constructs a new Leopard object with the specified owner.
     *
@@ -9,10 +10,11 @@ public class Leopard extends Animal {
       super(Animal.LEOPARD, owner);
    }
    
+   // DEVELOPED BY: SOFEA
    /**
-    * Returns a string representation of the elephant.
+    * Returns a string representation of the Leopard.
     *
-    * @return the string representation of the elephant
+    * @return the string representation of the Leopard
     */
    @Override
    public String toString(){

@@ -7,6 +7,7 @@ public class GameSystem {
    private final int[][] P2_TRAP = {{8,2}, {7,3}, {8,4}};
    private final int[][] BASE = {{0,3}, {8,3}};
    
+   // DEVELOPED BY: SOFEA
    /**
     * Constructs a new instance of the GameSystem class.
     * Initializes the players, the current player, and sets up the initial board configuration.
@@ -58,7 +59,8 @@ public class GameSystem {
          }
       }
    }
-
+   
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Checks if a given Rat is located on a river tile.
     *
@@ -76,6 +78,7 @@ public class GameSystem {
       return false;
    }
 
+   // DEVELOPED BY: SOFEA
    /**
     * Checks if a given Animal is located on a trap tile and returns the Player who owns the trap.
     * @param a The Animal object to check.
@@ -99,6 +102,7 @@ public class GameSystem {
       return null;
    }
 
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Determines if a predator Animal can eat a prey Animal based on their respective rules.
     *
@@ -125,6 +129,7 @@ public class GameSystem {
       return false;
    }
 
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Retrieves the valid left position for a given Animal on the board.
     *
@@ -167,6 +172,7 @@ public class GameSystem {
       return null;
    }
 
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Retrieves the valid right position for a given Animal on the board.
     *
@@ -223,6 +229,7 @@ public class GameSystem {
       return null;
    }
 
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Retrieves the valid up position for a given Animal on the board.
     *
@@ -268,6 +275,7 @@ public class GameSystem {
       return null;
    }
 
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Retrieves the valid down position for a given Animal on the board.
     *
@@ -315,6 +323,7 @@ public class GameSystem {
       return null;
    }
 
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Retrieves the position of a given Animal on the board.
     *
@@ -336,6 +345,7 @@ public class GameSystem {
       return null;
    }
 
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Retrieves the game board.
     *
@@ -345,6 +355,7 @@ public class GameSystem {
       return this.board;
    }
 
+   // DEVELOPED BY: SOFEA
    /**
     * Sets the current player based on the provided player ID.
     *
@@ -356,6 +367,7 @@ public class GameSystem {
       }
    }
 
+   // DEVELOPED BY: SOFEA
    /**
     * Retrieves the current player.
     *
@@ -365,6 +377,7 @@ public class GameSystem {
       return currPlayer;
    }
 
+   // DEVELOPED BY: SOFEA
    /**
     * Switches the current player to the other player.
     */
@@ -372,6 +385,7 @@ public class GameSystem {
       currPlayer = allPlayer[(currPlayer.GetId() * -1) + 2];
    }
 
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Determines the possible moves for a given animal on the board.
     *
@@ -406,6 +420,7 @@ public class GameSystem {
       return valid;
    }
 
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Moves an animal in the specified direction on the board.
     *
@@ -459,6 +474,7 @@ public class GameSystem {
       }
    }
 
+   // DEVELOPED BY: SOFEA
    /**
     * Checks if the current player has won the game.
     *

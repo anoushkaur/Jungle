@@ -11,20 +11,24 @@ public abstract class Animal extends Piece {
    private int owner;
    public final int ORIGRANK;
    
+   // DEVELOPED BY: SOFEA
    public Animal(int rank, int owner){
       this.owner = owner;
       this.rank = rank;
       this.ORIGRANK = rank;
    }
    
+   // DEVELOPED BY: SOFEA
    public int GetOwner(){
       return this.owner;
    }
-      
+   
+   // DEVELOPED BY: SOFEA   
    public int GetRank(){
       return this.rank;
    }
    
+   // DEVELOPED BY: SOFEA
    public void SetRank(int rank){
       this.rank = rank;
    }

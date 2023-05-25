@@ -1,5 +1,6 @@
 public class Rat extends Animal {   
 
+   // DEVELOPED BY: SOFEA
    /**
     * Constructs a new Rat object with the specified owner.
     *
@@ -9,6 +10,7 @@ public class Rat extends Animal {
       super(Animal.RAT, owner);
    }
    
+   // DEVELOPED BY: SOFEA
    /**
     * Returns a string representation of the Rat.
     *

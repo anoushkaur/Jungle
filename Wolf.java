@@ -1,5 +1,6 @@
 public class Wolf extends Animal {
 
+   // DEVELOPED BY: SOFEA
    /**
     * Constructs a new Wolf object with the specified owner.
     *
@@ -9,6 +10,7 @@ public class Wolf extends Animal {
       super(Animal.WOLF, owner);
    }
    
+   // DEVELOPED BY: SOFEA
    /**
     * Returns a string representation of the Wolf.
     *

@@ -1,4 +1,6 @@
 public class Displayer {
+
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Prints the game board.
     *
@@ -31,6 +33,7 @@ public class Displayer {
          System.out.println("-");
    }
    
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Prints the valid moves based on the given array.
     *
@@ -62,6 +65,7 @@ public class Displayer {
       }
    }
    
+   // DEVELOPED BY: ANOUSHKA
    /**
     * Prints the valid animals based on the given array.
     *

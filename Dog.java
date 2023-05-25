@@ -1,18 +1,20 @@
 public class Dog extends Animal {
    
+   // DEVELOPED BY: SOFEA
    /**
     * Constructs a new Dog object with the specified owner.
     *
-    * @param owner the owner (player) of the dog
+    * @param owner the owner (player) of the Dog
     */
    public Dog(int owner){
       super(Animal.DOG, owner);
    }
    
+   // DEVELOPED BY: SOFEA
    /**
-    * Returns a string representation of the dog.
+    * Returns a string representation of the Dog.
     *
-    * @return the string representation of the dog
+    * @return the string representation of the Dog
     */
    @Override
    public String toString(){
