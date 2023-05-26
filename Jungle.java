@@ -2,12 +2,9 @@ import java.util.Scanner;
 
 public class Jungle {
    public static void main(String[] args) {
-      // Animal a = new Rat(GameSystem.P2);
-      //  System.out.print(a);
       GameSystem gs = new GameSystem(); // Instantiating classes
       Displayer disp = new Displayer();
       Scanner input = new Scanner(System.in);
-      //System.out.println(gs.GetBoard()[3][5] instanceof River);
       int[] possibleMoves = new int[4];
       boolean animalFound = false;
       boolean GameOver = false;
