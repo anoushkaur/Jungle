@@ -21,10 +21,7 @@ public class Jungle {
       while (!GameOver) { // Player's Menu
          animalFound = false;
          disp.PrintBoard(gs.GetBoard()); // Displaying board
-         //Animal[] animals = gs.GetCurrPlayer().GetAnimals();
-         System.out.println("==================");
-         System.out.println("| PLAYER " + gs.GetCurrPlayer().GetId() + " TURN: |");
-         System.out.println("==================");
+         disp.PrintPlayer(gs.GetCurrPlayer().GetId()); 
          Animal[] animals = gs.GetCurrPlayer().GetAnimals();
          disp.PrintValidAnimals(animals); // Displaying animals
          System.out.print("Choose an animal: "); // Prompt user for which animalChoiceto move
@@ -47,7 +44,7 @@ public class Jungle {
          }
          else { //if at least 1 move avail
             disp.PrintValidMoves(moves); // Displaying possible moves
-            System.out.print("Choose a direction: "); // Prompt user for direction
+            System.out.print("Choose a direction or 0 to pick a different animal: "); // Prompt user for direction
             int dir = input.nextInt();
             //for loop checking how many moves are true in the possible moves arr
             int count = 0; 
@@ -58,15 +55,17 @@ public class Jungle {
                   count++;
                }
             }
-            while (dir < 1 || dir > count){
+            while (dir < 0 || dir > count){
                System.out.print("Error! Invalid direction. Please enter a valid direction: ");
                dir = input.nextInt();
             }
-            gs.Move(temp[dir-1], animals[animalChoice- 1]);
-            if (gs.CheckWinner()) {
-               GameOver = true;
-            } else {
-               gs.SwitchPlayer();
+            if (dir != 0){
+               gs.Move(temp[dir-1], animals[animalChoice- 1]);
+               if (gs.CheckWinner()) {
+                  GameOver = true;
+               } else {
+                  gs.SwitchPlayer();
+               }
             }
          }
       }

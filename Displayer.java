@@ -13,7 +13,6 @@ public class Displayer {
             System.out.print("---------");
          }
          System.out.println("-");
-         //checks if value is new, if it is it displays {} around it
          for (int k = 0; k<board[0].length; k++){
             //prints board and values with print f
             if (board[i][k] != null){
@@ -41,6 +40,7 @@ public class Displayer {
    */
    public void PrintValidMoves( boolean[] arr ){   
       int num = 1;
+      System.out.println(0 + ". Repick animal");
       for(int i = 0; i<arr.length; i++){
          if(arr[i]){
             switch(i){
@@ -78,4 +78,11 @@ public class Displayer {
          }       
       }
    }
+   
+   public void PrintPlayer (int player){
+      System.out.println("==================");
+      System.out.println("| PLAYER " + player + " TURN: |");
+      System.out.println("==================");
+   }
+   
 }
