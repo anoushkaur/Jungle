@@ -3,6 +3,11 @@ public class Player {
    private Animal[] animals;
    
    // DEVELOPED BY: SOFEA
+   /**
+    * Constructor for the Player class.
+    *
+    * @param id The player's ID.
+    */
    public Player(int id){
       this.id = id;
       animals = new Animal[8];
@@ -17,21 +22,41 @@ public class Player {
    }
    
    // DEVELOPED BY: SOFEA
+   /**
+    * Retrieves the ID of the player.
+    *
+    * @return The player's ID.
+    */
    public int GetId(){
       return this.id;
    }
    
    // DEVELOPED BY: SOFEA
+   /**
+    * Sets the ID of the player.
+    *
+    * @param id The player's ID.
+    */
    public void SetId(int id){
       this.id = id;
    }
    
    // DEVELOPED BY: SOFEA
+   /**
+    * Retrieves the array of animals owned by the player.
+    *
+    * @return The array of animals.
+    */
    public Animal[] GetAnimals(){
       return this.animals;
    }
    
    // DEVELOPED BY: SOFEA
+   /**
+    * Removes the specified animal from the player's array of animals.
+    *
+    * @param a The animal to be removed.
+    */
    public void RemoveAnimal(Animal a){
       for( int i = 0; i < animals.length; i++ ) {
          if(this.animals[i] != null && this.animals[i].GetRank() == a.GetRank()){
@@ -41,6 +66,11 @@ public class Player {
    }
    
    // DEVELOPED BY: SOFEA
+   /**
+    * Checks if all the animals owned by the player are dead.
+    *
+    * @return true if all animals are dead, false otherwise.
+    */
    public boolean isDeadAnimals(){
       for (int i = 0; i<animals.length; i++){
          if (this.animals[i] != null){

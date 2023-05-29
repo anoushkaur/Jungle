@@ -12,6 +12,12 @@ public abstract class Animal extends Piece {
    public final int ORIGRANK;
    
    // DEVELOPED BY: SOFEA
+   /**
+    * Constructor for the Animal class.
+    *
+    * @param rank  The rank of the animal.
+    * @param owner The owner of the animal.
+    */
    public Animal(int rank, int owner){
       this.owner = owner;
       this.rank = rank;
@@ -19,16 +25,31 @@ public abstract class Animal extends Piece {
    }
    
    // DEVELOPED BY: SOFEA
+   /**
+    * Retrieves the owner of the animal.
+    *
+    * @return The owner of the animal.
+    */
    public int GetOwner(){
       return this.owner;
    }
    
-   // DEVELOPED BY: SOFEA   
+   // DEVELOPED BY: SOFEA  
+   /**
+    * Retrieves the rank of the animal.
+    *
+    * @return The rank of the animal.
+    */ 
    public int GetRank(){
       return this.rank;
    }
    
    // DEVELOPED BY: SOFEA
+   /**
+    * Sets the rank of the animal.
+    *
+    * @param rank The rank to be set.
+    */
    public void SetRank(int rank){
       this.rank = rank;
    }
