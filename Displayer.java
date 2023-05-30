@@ -9,7 +9,7 @@ public class Displayer {
    public void PrintBoard( Piece[][] board ) {
       //prints a dotted line for every row except the last
       for(int i = 0; i<board.length; i++){
-         for (int j = 0; j<board[0].length; j++){
+         for (int j = 0; j<board[0].length; j++){ 
             System.out.print("---------");
          }
          System.out.println("-");
