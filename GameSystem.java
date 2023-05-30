@@ -127,7 +127,11 @@ public class GameSystem {
       } else if (pred instanceof Elephant && prey instanceof Rat) {
          return false; // If the predator is an elephant and the prey is a rat, the elephant cannot eat the rat
       } else if (pred.GetRank() >= prey.GetRank()) { // For other predator-prey combinations, if the predator's rank is greater than or equal to the prey's rank, the predator can eat the prey
-         return true;
+         if (prey instanceof Rat && isOnRiver((Rat)prey)){
+            return false;
+         } else {
+            return true;
+         }
       }
       return false;
    }
