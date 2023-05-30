@@ -1,7 +1,9 @@
 public class GameSystem {
-   private Player[] allPlayer;
-   private Player currPlayer;
-   private Piece[][] board = new Piece[9][7];
+   private Player[] allPlayer; // The array that holds both player objects
+   private Player currPlayer; 
+   private Piece[][] board; // The 2D Piece array that holds every piece objects
+   // Constant or Final Variable 
+   // Positions of river, each player's trap, and their base.
    private final int[][] RIVER = {{3,1}, {3,2},{3,4}, {3,5}, {4,1}, {4,2}, {4,4}, {4, 5}, {5,1}, {5,2}, {5,4}, {5, 5}};
    private final int[][] P1_TRAP = {{0,2}, {1,3}, {0,4}};
    private final int[][] P2_TRAP = {{8,2}, {7,3}, {8,4}};
@@ -14,8 +16,9 @@ public class GameSystem {
     * The animals and traps are placed on the board according to the game rules.
     */
    public GameSystem() {
-      allPlayer = new Player[2];
-      allPlayer[0] = new Player(1);
+      board = new Piece[9][7]; 
+      allPlayer = new Player[2]; 
+      allPlayer[0] = new Player(1); 
       allPlayer[1] = new Player(2);
       currPlayer = allPlayer[0];
       for (int i = 0; i < RIVER.length; i++) {
@@ -62,6 +65,28 @@ public class GameSystem {
    
    // DEVELOPED BY: ANOUSHKA
    /**
+    * Retrieves the position of a given Animal on the board.
+    *
+    * @param a The Animal for which to retrieve the position.
+    * @return An integer array containing the row and column coordinates of the Animal's position,
+    *         or {@code null} if the Animal is not found on the board.
+    */
+   private int[] getAnimalPos(Animal a) {
+      for (int i = 0; i < board.length; i++) {
+         for (int j = 0; j < board[0].length; j++) {
+            if (board[i][j] instanceof Animal && a == (Animal) board[i][j]) {
+               return new int[] {
+                  i,
+                  j
+               };
+            }
+         }
+      }
+      return null;
+   }
+   
+   // DEVELOPED BY: ANOUSHKA
+   /**
     * Checks if a given Rat is located on a river tile.
     *
     * @param r The Rat object to check.
@@ -92,13 +117,13 @@ public class GameSystem {
 
       for (int i = 0; i < P1_TRAP.length; i++) { // Check if the Animal's position matches any trap in P1_TRAP array
          if (P1_TRAP[i][0] == row && P1_TRAP[i][1] == col) {
-            return allPlayer[0]; // Return the first player in allPlayer array (assuming allPlayer is an array of Player objects)
+            return allPlayer[0]; // Return the first player in allPlayer array 
          }
       }
 
       for (int i = 0; i < P2_TRAP.length; i++) { // Check if the Animal's position matches any trap in P2_TRAP array
          if (P2_TRAP[i][0] == row && P2_TRAP[i][1] == col) {
-            return allPlayer[1]; // Return the second player in allPlayer array (assuming allPlayer is an array of Player objects)
+            return allPlayer[1]; // Return the second player in allPlayer array 
          }
       }
       return null; // If the animal is not on Trap
@@ -150,13 +175,12 @@ public class GameSystem {
       //RIVER (lion/tiger)
       if (a.GetRank() == Animal.LION || a.GetRank() == Animal.TIGER) {
          if (board[row][col - 1] instanceof River && board[row][col - 2] instanceof River) {
-            //if((board[row][col-3] == null) || (board[row][col-3] instanceof Animal && canEat(a, (Animal)board[row][col-3]))){
             if ((board[row][col - 3] == null) || ((board[row][col - 3] instanceof Animal && canEat(a, (Animal) board[row][col - 3])))) {
                return new int[] {row,col - 3};
             }
          }
       }
-      //RIVER (everyone else)
+      //RIVER (rat)
       if (board[row][col - 1] instanceof River && a instanceof Rat) {
          return new int[] {row,col - 1};
       }
@@ -330,28 +354,6 @@ public class GameSystem {
       return null;
    }
 
-   // DEVELOPED BY: ANOUSHKA
-   /**
-    * Retrieves the position of a given Animal on the board.
-    *
-    * @param a The Animal for which to retrieve the position.
-    * @return An integer array containing the row and column coordinates of the Animal's position,
-    *         or {@code null} if the Animal is not found on the board.
-    */
-   private int[] getAnimalPos(Animal a) {
-      for (int i = 0; i < board.length; i++) {
-         for (int j = 0; j < board[0].length; j++) {
-            if (board[i][j] instanceof Animal && a == (Animal) board[i][j]) {
-               return new int[] {
-                  i,
-                  j
-               };
-            }
-         }
-      }
-      return null;
-   }
-
    // DEVELOPED BY: SOFEA
    /**
     * Retrieves the game board.
@@ -478,7 +480,7 @@ public class GameSystem {
    public boolean CheckWinner() {
       // Get the reference to the other player
       Player otherPlayer = allPlayer[currPlayer.GetId() * -1 + 2];
-      // Check if the other player has any dead animals
+      // Check if all of other player's animals are dead
       if (otherPlayer.isDeadAnimals()) {
          return true;
       }
