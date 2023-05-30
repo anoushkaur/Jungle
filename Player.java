@@ -59,24 +59,24 @@ public class Player {
     */
    public void RemoveAnimal(Animal a){
       for( int i = 0; i < animals.length; i++ ) {
-         if(this.animals[i] != null && this.animals[i].GetRank() == a.GetRank()){
-            animals[i] = null;
+         if(this.animals[i] != null && this.animals[i].GetRank() == a.GetRank()){ // Compare the rank of i and specified animal
+            animals[i] = null; // Set the animal at index i to null, effectively removing it from the array.
          }
       }
    }
    
    // DEVELOPED BY: SOFEA
    /**
-    * Checks if all the animals owned by the player are dead.
+    * Checks if ALL the animals owned by the player are dead.
     *
     * @return true if all animals are dead, false otherwise.
     */
    public boolean isDeadAnimals(){
       for (int i = 0; i<animals.length; i++){
-         if (this.animals[i] != null){
-         return false;
+         if (this.animals[i] != null){ // Check if the animal at index i is not null (i.e., it exists).
+         return false; //  If there is at least one non-null animal, return false (not all animals are dead).
          }
       }
-      return true;
+      return true; // All animals are null (dead), so return true.
    }
 }
