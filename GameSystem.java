@@ -357,18 +357,6 @@ public class GameSystem {
    
    // DEVELOPED BY: SOFEA
    /**
-    * Sets the current player based on the provided player ID.
-    *
-    * @param id The ID of the player to set as the current player. Should be 1 or 2.
-    */
-   public void SetCurrPlayer(int id) {
-     if (id == 1 || id == 2) {
-         currPlayer = allPlayer[id - 1];
-     }
-   }
-   
-   // DEVELOPED BY: SOFEA
-   /**
     * Retrieves the current player.
     *
     * @return The current player.
