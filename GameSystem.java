@@ -68,14 +68,15 @@ public class GameSystem {
     * @return {@code true} if the Rat is on a river tile, {@code false} otherwise.
     */
    private boolean isOnRiver(Rat r) {
+      // Get the row and column of the Rat's position
       int row = getAnimalPos(r)[0];
       int col = getAnimalPos(r)[1];
-      for (int i = 0; i < RIVER.length; i++) {
-         if (row == RIVER[i][0] && col == RIVER[i][1]) {
-            return true;
+      for (int i = 0; i < RIVER.length; i++) { // Iterate/looping over each position in the RIVER array
+         if (row == RIVER[i][0] && col == RIVER[i][1]) { // Check if the Rat's position matches the current position in the RIVER array
+            return true; // If there is a match, the Rat is on the river
          }
       }
-      return false;
+      return false; // If Rat is not on River
    }
 
    // DEVELOPED BY: SOFEA
@@ -85,21 +86,22 @@ public class GameSystem {
     * @return The Player who owns the trap if the Animal is on a trap tile, otherwise {@code null}.
     */
    private Player isOnTrap(Animal a) {
+      // Get the row and column of the Animal's position
       int row = getAnimalPos(a)[0];
       int col = getAnimalPos(a)[1];
 
-      for (int i = 0; i < P1_TRAP.length; i++) {
+      for (int i = 0; i < P1_TRAP.length; i++) { // Check if the Animal's position matches any trap in P1_TRAP array
          if (P1_TRAP[i][0] == row && P1_TRAP[i][1] == col) {
-            return allPlayer[0];
+            return allPlayer[0]; // Return the first player in allPlayer array (assuming allPlayer is an array of Player objects)
          }
       }
 
-      for (int i = 0; i < P2_TRAP.length; i++) {
+      for (int i = 0; i < P2_TRAP.length; i++) { // Check if the Animal's position matches any trap in P2_TRAP array
          if (P2_TRAP[i][0] == row && P2_TRAP[i][1] == col) {
-            return allPlayer[1];
+            return allPlayer[1]; // Return the second player in allPlayer array (assuming allPlayer is an array of Player objects)
          }
       }
-      return null;
+      return null; // If the animal is not on Trap
    }
 
    // DEVELOPED BY: ANOUSHKA
@@ -111,19 +113,20 @@ public class GameSystem {
     * @return {@code true} if the predator can eat the prey, {@code false} otherwise.
     */
    private boolean canEat(Animal pred, Animal prey) {
-      if (pred.GetOwner() == prey.GetOwner()) {
-         return false;
+      if (pred.GetOwner() == prey.GetOwner()) { // Check if the predator and prey have the same owner
+         return false; // If they have the same owner, they cannot eat each other
       }
       if (pred instanceof Rat && prey instanceof Rat) {
+         // If both predator and prey are rats, check their positions relative to the river
          if ((isOnRiver((Rat) pred) && isOnRiver((Rat) prey) || (!isOnRiver((Rat) pred) && !isOnRiver((Rat) prey)))) {
-            return true;
+            return true; // If both rats are on river or both rats are not on river, they may eat each other
          }
          return false;
       } else if (pred instanceof Rat && prey instanceof Elephant && !isOnRiver((Rat) pred)) {
-         return true;
+         return true;  // If the predator is a rat and the prey is an elephant, and the rat is not on the river, the rat can eat the elephant
       } else if (pred instanceof Elephant && prey instanceof Rat) {
-         return false;
-      } else if (pred.GetRank() >= prey.GetRank()) {
+         return false; // If the predator is an elephant and the prey is a rat, the elephant cannot eat the rat
+      } else if (pred.GetRank() >= prey.GetRank()) { // For other predator-prey combinations, if the predator's rank is greater than or equal to the prey's rank, the predator can eat the prey
          return true;
       }
       return false;
@@ -345,7 +348,7 @@ public class GameSystem {
       return null;
    }
 
-   // DEVELOPED BY: ANOUSHKA
+   // DEVELOPED BY: SOFEA
    /**
     * Retrieves the game board.
     *
@@ -469,12 +472,16 @@ public class GameSystem {
     * @return true if the current player has won, false otherwise.
     */
    public boolean CheckWinner() {
+      // Get the reference to the other player
       Player otherPlayer = allPlayer[currPlayer.GetId() * -1 + 2];
+      // Check if the other player has any dead animals
       if (otherPlayer.isDeadAnimals()) {
          return true;
       }
+      // Get the base position of the other player
       int otherRow = BASE[otherPlayer.GetId() - 1][0];
       int otherCol = BASE[otherPlayer.GetId() - 1][1];
+      // Check if there is an animal at the other player's base position on the board
       return board[otherRow][otherCol] instanceof Animal;
    }
 }

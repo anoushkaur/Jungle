@@ -1,6 +1,6 @@
 public class Displayer {
 
-   // DEVELOPED BY: ANOUSHKA
+   // DEVELOPED BY: SOFEA
    /**
     * Prints the game board.
     *
@@ -79,6 +79,12 @@ public class Displayer {
       }
    }
    
+   //DEVELOPED BY: SOFEA
+   /**
+    * Prints the turn of the specified player in a box/header style.
+    *
+    * @param player the player number whose turn is to be printed
+    */
    public void PrintPlayer (int player){
       System.out.println("==================");
       System.out.println("| PLAYER " + player + " TURN: |");
